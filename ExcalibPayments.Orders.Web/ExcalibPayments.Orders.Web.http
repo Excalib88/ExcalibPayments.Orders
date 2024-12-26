@@ -1,0 +1,6 @@
+@ExcalibPayments.Orders.Web_HostAddress = http://localhost:5093
+
+GET {{ExcalibPayments.Orders.Web_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
