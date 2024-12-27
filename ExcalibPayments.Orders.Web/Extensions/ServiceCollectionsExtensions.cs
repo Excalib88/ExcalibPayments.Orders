@@ -1,3 +1,5 @@
+using ExcalibPayments.Orders.Application.Abstractions;
+using ExcalibPayments.Orders.Application.Services;
 using ExcalibPayments.Orders.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -53,6 +55,9 @@ public static class ServiceCollectionsExtensions
 
     public static WebApplicationBuilder AddApplicationServices(this WebApplicationBuilder builder)
     {
+        builder.Services.AddScoped<ICartsService, CartsService>();
+        builder.Services.AddScoped<IOrdersService, OrdersService>();
+        
         return builder;
     }
     
