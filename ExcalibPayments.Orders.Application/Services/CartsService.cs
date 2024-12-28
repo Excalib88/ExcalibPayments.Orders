@@ -1,4 +1,5 @@
 using ExcalibPayments.Orders.Application.Abstractions;
+using ExcalibPayments.Orders.Application.Mappers;
 using ExcalibPayments.Orders.Application.Models.Carts;
 using ExcalibPayments.Orders.Domain;
 using ExcalibPayments.Orders.Domain.Entities;
@@ -30,16 +31,6 @@ public class CartsService(OrdersDbContext context) : ICartsService
             .Include(x => x.CartItems)
             .FirstAsync(x => x.Id == cartSaveResult.Entity.Id);
 
-        return new CartDto
-        {
-            Id = result.Id,
-            CartItems = result.CartItems!.Select(item => new CartItemDto
-            {
-                Id = item.Id,
-                Name = item.Name,
-                Price = item.Price,
-                Quantity = item.Quantity
-            }).ToList()
-        };
+        return result.ToDto();
     }
 }
