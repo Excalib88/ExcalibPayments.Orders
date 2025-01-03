@@ -10,4 +10,7 @@ public class OrderEntity : BaseEntity
     
     public CartEntity? Cart { get; set; }
     public long? CartId { get; set; }
+    
+    public MerchantEntity? Merchant { get; set; }
+    public long? MerchantId { get; set; }
 }

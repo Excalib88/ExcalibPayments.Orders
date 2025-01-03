@@ -1,6 +1,7 @@
 using System.Text.Json;
 using ExcalibPayments.Orders.Application.Abstractions;
 using ExcalibPayments.Orders.Application.Models.Orders;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ExcalibPayments.Orders.Web.Controllers;
@@ -35,6 +36,7 @@ public class OrdersController(IOrdersService orders, ILogger<OrdersController> l
     }
 
     [HttpGet]
+    [Authorize]
     public async Task<IActionResult> GetAll()
     {
         logger.LogInformation("Method api/orders GetAll started.");
